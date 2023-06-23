@@ -187,6 +187,7 @@
         $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ProtectionPolicyResource]::new()
         $policyObject.Property = $Policy
 
+        
         $null = $PSBoundParameters.Remove("Policy")
         $null = $PSBoundParameters.Add("Parameter", $policyObject)
                 

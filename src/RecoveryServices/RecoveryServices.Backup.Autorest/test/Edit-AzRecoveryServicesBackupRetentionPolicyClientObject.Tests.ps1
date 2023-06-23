@@ -52,13 +52,13 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $pol1 = Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
         
         # update daily retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $true -DailyRetentionDurationInDays 56
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $true -DailyRetentionDurationInDays 56
  
         # update weekly retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 34 -WeeklyRetentionDaysOfTheWeek Sunday,Monday
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 34 -WeeklyRetentionDaysOfTheWeek Sunday,Monday
  
         # update monthly retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 36 -MonthlyRetentionDaysOfTheWeek "Monday","Tuesday" -MonthlyRetentionWeeksOfTheMonth Second, Fourth
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 36 -MonthlyRetentionDaysOfTheWeek "Monday","Tuesday" -MonthlyRetentionWeeksOfTheMonth Second, Fourth
  
         # update yearly retention
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 67 -YearlyRetentionMonthsOfTheYear May, June -YearlyRetentionDaysOfTheWeek Monday, Tuesday -YearlyRetentionWeeksOfTheMonth First, Third
@@ -100,7 +100,7 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         $pol1 = Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
         
         # update daily retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $true -DailyRetentionDurationInDays 56
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType AzureVM -EnableDailyRetention $true -DailyRetentionDurationInDays 56
  
         # fetch or set the schedule run days using Edit-AzrecoveryServicesBackupSchedulePolicyClientObject command
         $pol1.SchedulePolicy.ScheduleRunDay="Monday", "Tuesday", "Wednesday"
@@ -158,16 +158,16 @@ Describe 'Edit-AzRecoveryServicesBackupRetentionPolicyClientObject' {
         Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableWeeklyRetention $true -WeeklyRetentionDurationInWeeks 11 -WeeklyRetentionDaysOfTheWeek Sunday
         
         # update monthly retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek Monday,Tuesday -MonthlyRetentionWeeksOfTheMonth First, Last
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableMonthlyRetention $true -MonthlyRetentionScheduleType Weekly -MonthlyRetentionDurationInMonths 34 -MonthlyRetentionDaysOfTheWeek Monday,Tuesday -MonthlyRetentionWeeksOfTheMonth First, Last
  
         # update yearly retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 47 -YearlyRetentionMonthsOfTheYear May,June -YearlyRetentionDaysOfTheWeek Monday,Tuesday -YearlyRetentionWeeksOfTheMonth Last,First
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyFullBackup -EnableYearlyRetention $true -YearlyRetentionScheduleType Weekly -YearlyRetentionDurationInYears 47 -YearlyRetentionMonthsOfTheYear May,June -YearlyRetentionDaysOfTheWeek Monday,Tuesday -YearlyRetentionWeeksOfTheMonth Last,First
  
         # update incremental/differential backup retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyIncrementalBackup -IncrementalRetentionPeriodInDays 64
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyIncrementalBackup -IncrementalRetentionPeriodInDays 64
  
          # update log backup retention
-        Edit-AzRecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyLogBackup -LogRetentionPeriodInDays 23 
+        Edit-AzrecoveryServicesBackupRetentionPolicyClientObject -Policy $pol1 -DatasourceType SAPHANA -ModifyLogBackup -LogRetentionPeriodInDays 23 
  
         # create new policy with modified retention policy
         New-AzRecoveryServicesBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Policy $pol1 -PolicyName $newPolicyName

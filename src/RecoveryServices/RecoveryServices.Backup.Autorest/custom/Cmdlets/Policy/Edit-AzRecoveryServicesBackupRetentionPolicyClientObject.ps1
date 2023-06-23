@@ -284,6 +284,7 @@ function Edit-AzRecoveryServicesBackupRetentionPolicyClientObject {
                    $policyObject.RetentionPolicy.WeeklySchedule.RetentionTime=$scheduletime
               }
 
+
               if($EnableMonthlyRetention -eq $false )
               {
                    $policyObject.RetentionPolicy.MonthlySchedule = $null
